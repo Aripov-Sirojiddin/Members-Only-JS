@@ -1,4 +1,4 @@
-let users = ["Max"];
+
 
 function getAllUsers() {
   return users;
