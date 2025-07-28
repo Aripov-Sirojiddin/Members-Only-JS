@@ -5,7 +5,8 @@ function getAllUsers() {
 }
 
 async function createUser(userInfo) {
-  await pool.query("INSERT INTO members (username, password) VALUES($1, $2)", [
+
+  await pool.query("INSERT INTO members (username, password) VALUES ($1, $2)", [
     userInfo.username,
     userInfo.password,
   ]);

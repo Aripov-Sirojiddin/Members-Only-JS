@@ -1,3 +1,6 @@
-<% users.forEach((user) => { %>
-  <%- include("../partials/user.ejs", {user: user}) %>
-<% }); %>
+<% if (locals.currentUser) {%>
+  <h1>Messages</h1>
+<% } else { %>
+  <h1>Login</h1>
+  <%- include("../partials/login.ejs") %> 
+<% }; %>

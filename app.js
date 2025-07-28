@@ -1,7 +1,6 @@
 const path = require("node:path");
 const expressLayouts = require("express-ejs-layouts");
 const express = require("express");
-const indexRouter = require("./routers/indexRouter");
 const db = require("./models/db");
 
 //authentication imports
@@ -10,6 +9,17 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 
+//Route Imports
+const indexRouter = require("./routers/indexRouter");
+
+//Controller Imports
+const { signUp, createUser } = require("./controllers/signupControllers");
+const {
+  login,
+  authenticateUser,
+} = require("./controllers/authenticationControllers");
+
+//App configs
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -39,6 +49,11 @@ app.use(expressLayouts);
 app.set("layout", "layout");
 
 //Routes
+app.get("/sign-up", signUp);
+app.post("/sign-up", createUser);
+
+app.get("/login", login);
+app.post("/login", authenticateUser);
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
