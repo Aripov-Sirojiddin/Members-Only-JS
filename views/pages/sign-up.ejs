@@ -1,12 +1,32 @@
-<ul style="color: red;">
-  <% errors.forEach(error => { %>
+<% if(locals.currentUser) {%> 
+  <h1>You're already logged in silly! Let's go back <a href="/">home</a>.</h1>
+<% } else { %>
+  <ul style="color: red">
+    <% errors.forEach(error => { %>
     <li><%= error %></li>
-  <% }); %>
-</ul>
+    <% }); %>
+  </ul>
 
-<form action="/sign-up" method="POST" style="display: flex; flex-direction: column; max-width: fit-content;">
-  <input type="text" name="username" id="username" placeholder="Username" value="<%= username %>"/>
-  <input type="password" name="password" id="password" placeholder="Password" />
-  <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" />
-  <input type="submit" value="login" />
-</form>
+  <form
+    action="/sign-up"
+    method="POST"
+    style="display: flex; flex-direction: column; max-width: fit-content"
+  >
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Username"
+      value="<%= username %>"
+    />
+    <input type="password" name="password" id="password" placeholder="Password" />
+    <input
+      type="password"
+      name="confirm_password"
+      id="confirm_password"
+      placeholder="Confirm Password"
+    />
+    <input type="submit" value="login" />
+  </form>
+  <a href="/">Login</a>
+<% }; %>

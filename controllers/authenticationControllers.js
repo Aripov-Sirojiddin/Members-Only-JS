@@ -4,19 +4,16 @@ async function login(req, res) {
   res.render("pages/login");
 }
 
-async function authenticateUser(req, res) {
-  const incomingUserLoginInfo = {
-    ...req.body,
-  };
-  const userWithSameUsername = await db.getUserByUsername(
-    incomingUserLoginInfo.username
-  );
-  if (userWithSameUsername != null) {
-  }
-  res.redirect("/");
+async function logout(req, res) {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 }
 
 module.exports = {
   login,
-  authenticateUser,
+  logout,
 };

@@ -16,7 +16,7 @@ const indexRouter = require("./routers/indexRouter");
 const { signUp, createUser } = require("./controllers/signupControllers");
 const {
   login,
-  authenticateUser,
+  logout,
 } = require("./controllers/authenticationControllers");
 
 //App configs
@@ -49,17 +49,23 @@ app.use(expressLayouts);
 app.set("layout", "layout");
 
 //Routes
-app.get("/sign-up", signUp);
 app.post("/sign-up", createUser);
 
+app.get("/logout", logout);
 app.get("/login", login);
-app.post("/login", authenticateUser);
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/sign-up",
+  })
+);
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
-
+app.get("/sign-up", signUp);
 app.use("/", indexRouter);
 
 app.get("/*splat", (req, res) => {
