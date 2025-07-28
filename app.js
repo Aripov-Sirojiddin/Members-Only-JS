@@ -2,9 +2,26 @@ const path = require("node:path");
 const expressLayouts = require("express-ejs-layouts");
 const express = require("express");
 const indexRouter = require("./routers/indexRouter");
+const db = require("./models/db");
+
+//authentication imports
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+//Setting up session tokens
+app.use(
+  session({
+    secret: `${process.env.SESSION_SECRET}`,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.session());
 
 //Setting up the path for views
 app.set("views", path.join(__dirname, "views"));
@@ -22,13 +39,51 @@ app.use(expressLayouts);
 app.set("layout", "layout");
 
 //Routes
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use("/", indexRouter);
-app.use("/new", indexRouter);
 
 app.get("/*splat", (req, res) => {
   res.status(404).render(path.join(__dirname, "views/pages/404.ejs"));
 });
 
+//Passport.js
 
-//Server run 
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await db.getUserByUsername(username);
+      if (!user) {
+        return done(null, false, { message: "Wrong credentials given." });
+      }
+
+      const isCorrectPassword = await bcrypt.compare(password, user.password);
+      if (!isCorrectPassword) {
+        return done(null, false, { message: "Wrong credentials given." });
+      }
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  })
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await db.getUserById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
+
+//Server run
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

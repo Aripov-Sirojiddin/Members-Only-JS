@@ -1,4 +1,4 @@
-const { Pool } = requrie("pg");
+const { Pool } = require("pg");
 
 module.exports = new Pool({
   host: "localhost",
