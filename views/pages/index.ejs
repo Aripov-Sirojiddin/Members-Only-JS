@@ -1,10 +1,15 @@
-<% if (locals.currentUser) {%>
+<% if (currentUser) {%>
   <%- include("../partials/header.ejs") %>
-  <% if (locals.isMember) { %>
+  <% if (isMember) { %>
     <a href="/messages/new">Post new message</a>
   <% } else { %>
     <a href="/initiation">Initiate</a>
   <% }; %>
+  
+  <% messages.forEach((message) => { %>
+    <% console.log(message)%>
+    <%- include("../partials/message.ejs", {message: message}) %>
+  <% }); %>
 <% } else { %>
   <%- include("../partials/login.ejs") %> 
 <% }; %>
