@@ -88,6 +88,7 @@ a:hover {
   display: flex;
   max-width: fit-content;
   padding: 1rem;
+  margin: 1rem;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;

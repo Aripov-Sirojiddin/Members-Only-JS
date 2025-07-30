@@ -1,6 +1,10 @@
 <% if (locals.currentUser) {%>
   <%- include("../partials/header.ejs") %>
-  <a href="/messages/new">Post new message</a>
+  <% if (locals.isMember) { %>
+    <a href="/messages/new">Post new message</a>
+  <% } else { %>
+    <a href="/initiation">Initiate</a>
+  <% }; %>
 <% } else { %>
   <div class="center_div">
     <div class="white_box_container">
