@@ -1,0 +1,19 @@
+<div class="center_div">
+  <div class="white_box_container">
+    <h1>Initiation</h1>
+    <div style="color: red">
+      <% if (locals.wrong) { %>
+        <p>Incorrect Password</p>
+      <% }; %>
+    </div>
+    <form method="POST" action="/initiation/initiate">
+      <input
+        type="password"
+        name="secret"
+        id="secret"
+        placeholder="The Secret"
+      />
+      <input type="submit" value="Initiate" />
+    </form>
+  </div>
+</div>

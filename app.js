@@ -12,6 +12,7 @@ const bcrypt = require("bcrypt");
 //Route Imports
 const indexRouter = require("./routers/indexRouter");
 const messagesRouter = require("./routers/messagesRouter");
+const initiationRouter = require("./routers/initiationRouter");
 
 //Controller Imports
 const { signUp, createUser } = require("./controllers/signupControllers");
@@ -65,6 +66,7 @@ app.use((req, res, next) => {
 });
 app.get("/sign-up", signUp);
 app.use("/messages", messagesRouter);
+app.use("/initiation", initiationRouter);
 app.use("/", indexRouter);
 
 app.get("/*splat", (req, res) => {
