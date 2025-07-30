@@ -1,4 +1,11 @@
-<div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem;">
+<div class="header">
     <a href="/"><h1>Messages</h1></a>
-    <a href="/logout" class="button">Log Out</a>
+    <div class="links">
+      <% if (isMember) { %>
+        <a href="/messages/new">Post new message</a>
+      <% } else { %>
+        <a href="/initiation">Initiate</a>
+      <% }; %>
+      <a href="/logout" class="button">Log Out</a>
+    </div>
   </div>

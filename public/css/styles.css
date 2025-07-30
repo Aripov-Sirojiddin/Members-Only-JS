@@ -6,11 +6,12 @@
 }
 h1 {
   text-shadow: -2px 2px 3px var(--mainColor);
-  font-size: 350%;
+  font-size: 250%;
   padding: 0;
   margin: 0;
   color: var(--mainColor);
 }
+
 body {
   height: 100vh;
   margin: 0;
@@ -77,21 +78,39 @@ input[type="submit"]:hover {
 a {
   color: var(--mainColor);
   text-decoration: none;
-  font-size: large;
+  font-size: larger;
   transition: color 0.2s ease-in-out;
 }
 
 a:hover {
   color: var(--accentColor);
 }
+
+.header {
+  background: var(--secondaryColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  padding: 1rem;
+  background: var(--mainColor);
+  color: white;
+  text-shadow: -2px 2px 3px white;
+}
+
+.header .links {
+  padding-inline: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .white_box_container {
   display: flex;
-  max-width: fit-content;
   padding: 1rem;
   margin: 1rem;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   background: white;
   border-radius: 0.5rem;
   box-shadow: 5px 5px 25px rgb(207, 207, 207);
@@ -100,6 +119,10 @@ a:hover {
 .center_div {
   height: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center_children {
   justify-content: center;
   align-items: center;
 }
