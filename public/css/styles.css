@@ -110,6 +110,7 @@ a:hover {
   display: flex;
   padding: 1rem;
   margin: 1rem;
+  width: fit-content;
   flex-direction: column;
   background: white;
   border-radius: 0.5rem;
@@ -125,4 +126,28 @@ a:hover {
 .center_children {
   justify-content: center;
   align-items: center;
+}
+
+.horizontal_container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.horizontal_container h2 {
+  color: var(--accentColor);
+  margin: 0;
+}
+
+.horizontal_container p {
+  color: var(--mainColor);
+  font-size: x-large;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.message_box > p {
+  color: var(--secondaryColor);
+  font-size: x-large;
+  margin: 0;
 }
