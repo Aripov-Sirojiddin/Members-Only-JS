@@ -96,7 +96,14 @@ a:hover {
   padding: 1rem;
   background: var(--mainColor);
   color: white;
-  text-shadow: -2px 2px 3px white;
+}
+
+.messages{
+  padding-inline: 25%;
+}
+
+.my_msg {
+  justify-self: end;
 }
 
 .header .links {

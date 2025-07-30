@@ -1,11 +1,15 @@
 const messagesModel = require("../models/messagesModel");
+const { isMember } = require("../models/membersModel.js");
 
 async function newMessage(req, res) {
   if (!res.locals.currentUser) {
     res.redirect("/");
     return;
   }
-  res.render("pages/newMessage");
+  const status = res.locals.currentUser
+    ? await isMember(res.locals.currentUser.id)
+    : false;
+  res.render("pages/newMessage", { isMember: status });
 }
 async function createMessage(req, res) {
   if (!res.locals.currentUser) {

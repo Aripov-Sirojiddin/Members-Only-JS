@@ -1,11 +1,12 @@
-<div class="white_box_container full_width message_box">
-  <div class="horizontal_container">
+<div class="white_box_container full_width message_box  <%if(message.username == locals.currentUser.username) {%> my_msg<%};%>">
+  <div
+    class="horizontal_container">
     <% if(message.username) {%>
-      <h2 class="name">@<%= message.username %> says</h2>
+    <h2 class="name">@<%= message.username %> says</h2>
     <% } else { %>
-      <h2>Someone says</h2>
+    <h2>Someone says</h2>
     <% } %>
-    <p> <%= message.title %></p>
+    <p><%= message.title %></p>
   </div>
   <p><%= message.message %></p>
 </div>
