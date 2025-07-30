@@ -65,8 +65,8 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/sign-up", signUp);
-app.use("/messages", messagesRouter);
 app.use("/initiation", initiationRouter);
+app.use("/messages", messagesRouter);
 app.use("/", indexRouter);
 
 app.get("/*splat", (req, res) => {
@@ -101,6 +101,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await userModel.getUserById(id);
+    delete user.password;
     done(null, user);
   } catch (err) {
     done(err);

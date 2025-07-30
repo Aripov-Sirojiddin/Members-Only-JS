@@ -1,9 +1,11 @@
-const userModel = require("../models/usersModel.js");
+const { isMember } = require("../models/membersModel.js");
 
-async function getAllUsers(req, res) {
-  res.render("pages/index");
+async function getMessages(req, res) {
+  const userId = res.locals.currentUser ? res.locals.currentUser.id : -1;
+  const status = await isMember(userId);
+  res.render("pages/index", { isMember: status });
 }
 
 module.exports = {
-  getAllUsers,
+  getMessages,
 };

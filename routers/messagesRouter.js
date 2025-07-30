@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const { ensureAuth, newMessage } = require("../controllers/messagesController");
+const { newMessage } = require("../controllers/messagesController");
 const messagesRouter = Router();
 
-messagesRouter.get("/new", ensureAuth, newMessage);
+messagesRouter.get("/new", newMessage);
 
 module.exports = messagesRouter;

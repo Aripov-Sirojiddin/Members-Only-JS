@@ -1,14 +1,11 @@
-async function ensureAuth(req, res) {
+async function newMessage(req, res) {
   if (!res.locals.currentUser) {
     res.redirect("/");
-    return ;
+    return;
   }
-}
-async function newMessage(req, res) {
   res.render("pages/newMessage");
 }
 
 module.exports = {
-  ensureAuth,
   newMessage,
 };
