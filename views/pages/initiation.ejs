@@ -1,9 +1,9 @@
 <div class="center_div">
   <div class="white_box_container">
-    <h1>Initiation</h1>
+    <a href="/"><h1>Initiation</h1></a>
     <div style="color: red">
       <% if (locals.wrong) { %>
-        <p>Incorrect Password</p>
+      <p>Incorrect Password</p>
       <% }; %>
     </div>
     <form method="POST" action="/initiation/initiate">
@@ -15,5 +15,6 @@
       />
       <input type="submit" value="Initiate" />
     </form>
+    <a href="/">Go back home?</a>
   </div>
 </div>
