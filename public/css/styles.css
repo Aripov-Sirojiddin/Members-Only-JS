@@ -1,11 +1,21 @@
-:root{
-  --mainColor: rgb(249, 164, 18);
-  --secondaryColor: rgb(239, 132, 32);
+:root {
+  --mainColor: #7FD1B9;
+  --secondaryColor: #918EF4;
+  --contrastColor: #cdc3b2;
+  --accentColor: #E56399;
 }
-
-body {
+h1 {
+  text-shadow: -2px 2px 3px var(--mainColor);
+  font-size: 350%;
+  padding: 0;
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--mainColor);
+}
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 form {
@@ -13,36 +23,79 @@ form {
   flex-direction: column;
   max-width: fit-content;
 }
+form * {
+  height: var(--inputHeight);
+}
 
-input, textarea {
+input,
+textarea {
+  color: var(--mainColor);
+  font-weight: bold;
   font-size: x-large;
   padding: 0.4rem 1rem 0.4rem;
   margin-block: 0.2rem;
-  border: 1px solid var(--mainColor);
+  border: 2px solid var(--mainColor);
   border-radius: 0.5rem;
 }
-
+input::placeholder, textarea::placeholder {
+  color: var(--contrastColor);
+  font-weight:lighter;
+}
 textarea {
   min-width: fit-content;
   max-width: fit-content;
   min-height: fit-content;
 }
 
-a, button, input[type=submit] {
+a.button,
+button,
+input[type="submit"] {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  font-size: large;
+  font-size: x-large;
   background: var(--mainColor);
   border: none;
   border-radius: 0.5rem;
-  padding:0.5rem 1rem 0.5rem;
+  padding: 0.5rem 1rem 0.5rem;
   display: block;
   margin-block: 0.2rem;
   transition: background 0.3s ease-in-out;
 }
 
-a:hover, button:hover, input[type=submit]:hover {
+a.button:hover,
+button:hover,
+input[type="submit"]:hover {
+  color: white;
+  cursor: pointer;
   background: var(--secondaryColor);
 }
 
+a {
+  color: var(--mainColor);
+  text-decoration: none;
+  font-size: large;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--secondaryColor);
+}
+.white_box_container {
+  display: flex;
+  max-width: fit-content;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 25px rgb(207, 207, 207);
+}
+
+.center_div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
