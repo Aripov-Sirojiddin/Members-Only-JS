@@ -1,4 +1,4 @@
-const db = require("../models/db.js");
+const userModel = require("../models/usersModel.js");
 const bcrypt = require("bcrypt");
 
 async function signUp(req, res) {
@@ -20,7 +20,7 @@ async function createUser(req, res, next) {
     const hashedPassword = await bcrypt.hash(userInfo.password, 10);
     userInfo.password = hashedPassword;
     delete userInfo.confirm_password;
-    await db.createUser(userInfo);
+    await userModel.createUser(userInfo);
 
     res.redirect("/");
   } catch (err) {

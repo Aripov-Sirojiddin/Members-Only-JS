@@ -1,7 +1,7 @@
 const path = require("node:path");
 const expressLayouts = require("express-ejs-layouts");
 const express = require("express");
-const db = require("./models/db");
+const userModel = require("./models/usersModel");
 
 //authentication imports
 const session = require("express-session");
@@ -77,7 +77,7 @@ app.get("/*splat", (req, res) => {
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const user = await db.getUserByUsername(username);
+      const user = await userModel.getUserByUsername(username);
       if (!user) {
         return done(null, false, { message: "Wrong credentials given." });
       }
@@ -99,7 +99,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await db.getUserById(id);
+    const user = await userModel.getUserById(id);
     done(null, user);
   } catch (err) {
     done(err);

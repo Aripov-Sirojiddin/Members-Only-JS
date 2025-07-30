@@ -1,5 +1,3 @@
-const db = require("../models/db.js");
-
 async function login(req, res) {
   res.render("pages/login");
 }
