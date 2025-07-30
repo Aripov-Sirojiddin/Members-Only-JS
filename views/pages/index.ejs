@@ -1,6 +1,6 @@
 <% if (locals.currentUser) {%>
-  <h1>Messages</h1>
-  <a href="/logout">Log Out</a>
+  <%- include("../partials/header.ejs") %>
+  <a href="/messages/new">Post new message</a>
 <% } else { %>
   <h1>Login</h1>
   <%- include("../partials/login.ejs") %> 
