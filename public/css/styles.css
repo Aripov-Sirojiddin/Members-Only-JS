@@ -1,8 +1,8 @@
 :root {
-  --mainColor: #7FD1B9;
-  --secondaryColor: #918EF4;
+  --mainColor: #7fd1b9;
+  --secondaryColor: #918ef4;
   --contrastColor: #cdc3b2;
-  --accentColor: #E56399;
+  --accentColor: #e56399;
 }
 h1 {
   text-shadow: -2px 2px 3px var(--mainColor);
@@ -37,14 +37,17 @@ textarea {
   border: 2px solid var(--mainColor);
   border-radius: 0.5rem;
 }
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: var(--contrastColor);
-  font-weight:lighter;
+  font-weight: lighter;
 }
 textarea {
-  min-width: fit-content;
-  max-width: fit-content;
-  min-height: fit-content;
+  color: var(--secondaryColor);
+  font-weight: lighter;
+  width: 25rem;
+  min-width: 25rem;
+  min-height: 10rem;
 }
 
 a.button,
@@ -68,7 +71,7 @@ button:hover,
 input[type="submit"]:hover {
   color: white;
   cursor: pointer;
-  background: var(--secondaryColor);
+  background: var(--accentColor);
 }
 
 a {
@@ -79,7 +82,7 @@ a {
 }
 
 a:hover {
-  color: var(--secondaryColor);
+  color: var(--accentColor);
 }
 .white_box_container {
   display: flex;
